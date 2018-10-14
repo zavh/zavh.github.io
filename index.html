@@ -15,13 +15,13 @@ body{
 	position: relative;
 	width:221px;
 	height:221px;
+	left:10px;
 	background-color:#fff;
 	border-radius:100%;
 	border: 2px solid rgba(0,0,0,0.05);
 	box-shadow: 0px 0px 0px 70px #fdfdfd, 0px 0px 0px 72px rgba(0,0,0,0.05),0px 0px 0px 140px #fdfdfd,0px 0px 0px 142px rgba(0,0,0,0.05);
 }
 .logo img{
-	margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -32,15 +32,13 @@ body{
 }
 div.header {
     width: 100%;
-	height:230px;
+	height:250px;
     overflow: hidden;
     position: relative;
 	top:-40px;
-	left:20px;
+	left:0px;
 }
 .bluemenu{
-	margin-left:-20px;
-	margin-top:0px;
 	bottom: -1px;
 	border-radius:0px 15px 15px 0px;
 	position:absolute;
@@ -56,28 +54,25 @@ div.header {
 }
 .bluemenu .bluemain .bluecontent{
 	background: linear-gradient(to bottom, #019cdf, #00adef);
-	box-shadow: 0px 0px 0px 6px #00adef;
-	border-radius:8px;
+	box-shadow: 0px 0px 0px 8px #00adef;
+	border-radius:10px;
 	height:40px;
 	width:800px;
 	margin:6px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 14px;
 	color:white;
-	text-shadow: 0.2px 0.5px 0.2px black;
-	letter-spacing: -0.2px;
-	vertical-align:middle;
 }
 .promotion{
-	width:177px;
-	height:177px;
+	width:173px;
+	height:173px;
 	background: linear-gradient(to bottom, #c1cd21, #a9b40e);
-	top:40px;
-	left:489px;
+	top:55px;
+	left:484px;
 	position:absolute;
 	border-radius:100%;
 	border: 1px solid rgba(255,255,255,0.5);
-	box-shadow: 0px 0px 0px 10px #c1cd21;
+	box-shadow: 0px 0px 0px 12px #c1cd21;
 }
 
 .promotion-shadow{
@@ -85,8 +80,8 @@ div.header {
 	height:190px;
 	background: linear-gradient(to right, #f8f8f8, rgba(0,0,0,0.3));
 	transform: rotate(40deg);
-	top:26px;
-	left:487px;
+	top:41px;
+	left:480px;
 	position:absolute;
 	border-radius:100%;
 }
@@ -131,28 +126,28 @@ div.header {
     -ms-transform: translate(-20%, -10%);
     transform: translate(-20%, -10%);
 	font-family: 'Offside', cursive;
-	font-size: 12px;
+	font-size: 11px;
 	color:white;
 	text-shadow: 0.6px 0.6px 0.4px black;
 }
 
 .bookroom{
-	width:327px;
-	height:327px;
+	width:317px;
+	height:317px;
 	background: linear-gradient(to bottom, #c1cd21, #a9b40e);
 	top:-62px;
 	left:595px;
 	position:absolute;
 	border-radius:100%;
 	border: 2px solid #ccd74c;
-	box-shadow: 0px 0px 0px 10px #c1cd21;
+	box-shadow: 0px 0px 0px 20px #c1cd21;
 }
 .welcome-screen{
 	width:532px;
 	height:532px;
 	background: linear-gradient(to bottom, #00adef, #006ab6);
-	top:91px;
-	left:81px;
+	top:80px;
+	left:70px;
 	position:absolute;
 	border-radius:100%;
 	border: 2px solid #39c0f0;
@@ -161,61 +156,95 @@ div.header {
 }
 .welcome-screen-overlay{
     width: 837px;
-    height: 210px;
+    height: 200px;
     overflow: hidden;
     text-overflow: clip; 
     position: absolute;
 	top:-20px;
-	left:20px;
 	background-color:#f8f8f8;
 }
-.effect4
-{
-  position: relative;
-  border: 1px solid black;
+.sudo-body{
+	width:770px;
+	height:770px;
+	background-color:#fdfdfd;
+	left:-50px;
+	top:-130px;
+	position:absolute;
+	border-radius:100%;
+	border: 2px solid #eeeeee;
+	box-shadow: 0px 0px 0px 30px #fdfdfd;
 }
 
 </style>
 </head>
 <body>
-	<div class="welcome-screen">
-	  <div class='w3-row'>
-		<div class='w3-rest' style='top:100px;left:60px;position:absolute;font-size:10px;width:78%;text-align:justify;color:cyan'>
-			<p>The reason for creating was not to be a protfolio at the first place. It started as a CSS practice/self teaching tutorial. Back in the Macromedia (later Adobe) Flash days, the websites were, just say - a bit different from today's websites. Everybody wanted to have a cool "Loading" scfreen, crazy shapes, graphics, animations. I wanted to see if those designs can be made suitable with latest technologies. And that's how it started.</p>
-			<p>First of all, the layout is not mine, it belongs to <a href='https://www.deviantart.com/gregbike/art/Cable-Beach-Resort-47380827'>gregbike</a> This is from 2007 and the design became a Daily Deviation - meaning one of the featured artwork from 10s and 1000s artworks posted at DA.</p>
-			<p>Secondly, I avoided using any image in this practice website. So, what you are looking at are all html elements.</p>
-			<p>Thirdly, this website is responsive. Well, isn't every other website now a days? Great CSS frameworks like Bootstrap, w3css makes life a lot easier. The initial release will contain w3css as css framework, but ultimately no framework/libraries will be used here except for Reactjs. So, no jQuery either. The reason for mentioning is, the mobile views are designed by me, keeping the original theme in mind.</p>
-			<p>Fourthly, since it started as a practice reservoir, I'd like to keep it that way. I am currently learning Reactjs, so I will be using some of the lessons here. That doesn't mean the contents of this website is true. The information I will be putting in here are all genuin.</p>
-
+		<div style='position:absolute;top:50px;left:16px;overflow:hidden;width:800px;height:800px;'>
+			<div class='sudo-body'></div>
 		</div>
-		<div class='w3-col' style='width:10px;border-left:1px solid cyan;position:absolute'>asdsasdasdasdasdsa</div>
-	  </div>
-	</div>
-	<div class="welcome-screen-overlay">
-	</div>	
-	<div class="bookroom">
+		<div class="welcome-screen">		
+			<div class='w3-row'>
+				<div class='w3-rest' style='top:130px;left:60px;position:absolute;font-size:10px;width:78%;text-align:justify;color:cyan' id='content'>
+					<p>The reason for creating was not to be a protfolio at the first place. It started as a CSS practice/self teaching tutorial. Back in the Macromedia (later Adobe) Flash days, the websites were, just say - a bit different from today's websites. Everybody wanted to have a cool "Loading" screen, crazy shapes, graphics, animations. I wanted to see if those designs can be made suitable with latest technologies. And that's how it started.</p>
+					<p>First of all, the layout is not mine, it belongs to <a href='https://www.deviantart.com/gregbike/art/Cable-Beach-Resort-47380827'>gregbike</a> This is from 2007 and the design became a Daily Deviation - meaning one of the featured artwork from 10s and 1000s artworks posted at DA.</p>
+					<p>Secondly, I avoided using any image in this practice website. So, what you are looking at are all html elements.</p>
+					<p>Thirdly, this website is responsive. Well, isn't every other website now a days? Great CSS frameworks like Bootstrap, w3css makes life a lot easier. The initial release will contain w3css as css framework, but ultimately no framework/libraries will be used here except for Reactjs. So, no jQuery either. The reason for mentioning is, the mobile views are designed by me, keeping the original theme in mind.</p>
+					<p>Fourthly, since it started as a practice reservoir, I'd like to keep it that way. I am currently learning Reactjs, so I will be using some of the lessons here. That doesn't mean the contents of this website is true. The information I will be putting in here are all genuin.</p>
+		
+				</div>
+				<div class='w3-col' style='height:230px;width:4px;border-radius: 10%; color: cyan;position:absolute;left:485px;top:150px;overflow: hidden'>
+					<!--<div><a href='javascript:void(0)' style='text-decoration: none' onclick='contentUp()'>&#8679;</a></div>
+					<div><a href='javascript:void(0)' style='text-decoration: none' onclick='contentDown()'>&#8681;</a></div>-->
+					<div style='background-color: black;height:20px;cursor:ns-resize;' onclick="alert('I am movable')"></div>
+				</div>
+			</div>
+		</div>
+		<div class='welcome-screen-overlay'></div>
+		  
+	<div class="bookroom" id='temp' style='color:black'>
 	</div>
 	
-<div class="w3-container header">
-	<div class="logo">
-		<img src="images/logo.png" width=76%>
-	</div>
-	<div class="promotion-shadow"></div>
-	<div class="promotion">
-	<form>
-	 <label for="email">Promotions<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to your email...</label>
-	 <input id="email" type="text" placeholder="your email here...">
-	 <button type="submit">&rsaquo;</button>
-	 </form>
-	</div>
-<div class="w3-row bluemenu" style="width:832px;">
-	<div class="w3-col bluestart"></div>
-	<div class="w3-rest bluemain">
-		<div class="bluecontent">
-			<span style="position:absolute;left:60px;top:15px" class='w3-wide'><b>| LARAVEL | PHP | WORDPRESS | REACTJS | PSD CONVERSION | HTML5 | CSS |</b></span>
+<div class="w3-container">
+	<div class='header'>
+		<div class="logo">
+			<img src="images/logo.png" width=76%>
+		</div>
+		<div class="promotion-shadow">
+		</div>
+		<div class="promotion">
+			<form>
+				<label for="email">Promotions<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to your email...</label>
+				<input id="email" type="text" placeholder="your email here...">
+				<button type="submit">&rsaquo;</button>
+			</form>
+		</div>
+		<div class="w3-row bluemenu" style="width:832px;">
+			<div class="w3-col bluestart"></div>
+			<div class="w3-rest bluemain">
+				<div class="bluecontent">
+					<span style="position:absolute;left:60px;top:15px" class='w3-wide'><b>| LARAVEL | PHP | WORDPRESS | REACTJS | PSD CONVERSION | HTML5 | CSS |</b></span>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 </body>
 </html>
+<script>
+var x = document.getElementById('temp');
+var y = document.getElementById('content');
+x.innerHTML = "<p style='top:60px;left:100px;position:absolute'>Height of content: "+y.offsetHeight+'<br>Width of content: '+y.offsetWidth+'</p>';
+
+function contentUp(){
+	
+	var x = document.getElementById('content');
+	
+	x.style.top = x.offsetTop + 5 + "px";
+}
+
+function contentDown(){
+	
+	var x = document.getElementById('content');
+	
+	x.style.top = x.offsetTop - 5 + "px";
+}
+</script>
