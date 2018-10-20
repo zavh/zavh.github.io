@@ -181,7 +181,7 @@ div.header {
 		<div style='position:absolute;top:50px;left:16px;overflow:hidden;width:800px;height:800px;'>
 			<div class='sudo-body'></div>
 		</div>
-		<div class="welcome-screen">		
+		<div class="welcome-screen" id='content-container'>
 			<div class='w3-row'>
 				<div class='w3-rest' style='top:130px;left:60px;position:absolute;font-size:10px;width:78%;text-align:justify;color:cyan' id='content'>
 					<p>The reason for creating was not to be a protfolio at the first place. It started as a CSS practice/self teaching tutorial. Back in the Macromedia (later Adobe) Flash days, the websites were, just say - a bit different from today's websites. Everybody wanted to have a cool "Loading" screen, crazy shapes, graphics, animations. I wanted to see if those designs can be made suitable with latest technologies. And that's how it started.</p>
@@ -191,10 +191,9 @@ div.header {
 					<p>Fourthly, since it started as a practice reservoir, I'd like to keep it that way. I am currently learning Reactjs, so I will be using some of the lessons here. That doesn't mean the contents of this website is true. The information I will be putting in here are all genuin.</p>
 		
 				</div>
-				<div class='w3-col' style='height:230px;width:4px;border-radius: 10%; color: cyan;position:absolute;left:485px;top:150px;overflow: hidden'>
-					<!--<div><a href='javascript:void(0)' style='text-decoration: none' onclick='contentUp()'>&#8679;</a></div>
-					<div><a href='javascript:void(0)' style='text-decoration: none' onclick='contentDown()'>&#8681;</a></div>-->
-					<div style='background-color: black;height:20px;cursor:ns-resize;' onclick="alert('I am movable')"></div>
+				<div class='w3-col' style='border:1px solid cyan;height:230px;width:5px;border-radius: 10%; color: cyan;position:absolute;left:485px;top:150px;overflow: hidden' id='scroller'>
+					<div style='background-color:rgba(0,0,0,0.5);height:70px;width:3px;cursor:ns-resize;top:0px;position:absolute' 
+						onmousedown="slideReady(event)" id='slider'></div>
 				</div>
 			</div>
 		</div>
@@ -230,21 +229,96 @@ div.header {
 </body>
 </html>
 <script>
-var x = document.getElementById('temp');
-var y = document.getElementById('content');
-x.innerHTML = "<p style='top:60px;left:100px;position:absolute'>Height of content: "+y.offsetHeight+'<br>Width of content: '+y.offsetWidth+'</p>';
 
-function contentUp(){
-	
-	var x = document.getElementById('content');
-	
-	x.style.top = x.offsetTop + 5 + "px";
-}
+	var clicked = 0;
+	window.addEventListener("mouseup", slideFinish);
 
-function contentDown(){
-	
-	var x = document.getElementById('content');
-	
-	x.style.top = x.offsetTop - 5 + "px";
-}
+	var scroller = document.getElementById('scroller');
+	var slider = document.getElementById('slider');
+	var content = document.getElementById('content');
+
+	/* The welcome screen is a circle. When concealing a content area within, the
+	visible area is (width of the content) X (height of the available area)  
+	Now, height of the available area is calculated like the following:
+	square(circular container radius) = square(content width) + square(availabel area height)
+	so, avaialbel area height = square root of(square(circular container diameter)-square(content width))
+	*/
+	var cdia = document.getElementById('content-container').offsetHeight; //radius of the circular area
+	var contw = content.offsetWidth;
+	var avarh = Math.floor(Math.sqrt(Math.pow(cdia, 2) - Math.pow(contw, 2)));
+	console.log('Available Area Height', avarh);
+	console.log('Content Areah Height', content.offsetHeight);
+	console.log('Content Top', content.offsetTop);
+	var contentHighest = content.offsetTop;
+	var contentLowest = content.offsetHeight - avarh;
+	console.log('Lowest for content', contentLowest);
+	var maxlow = scroller.offsetHeight-73;
+	var maxhigh = 0;
+
+	function slideReady(e){
+		/*prevent any other actions that may occur when moving over the image:*/
+		e.preventDefault();
+		/*the slider is now clicked and ready to move:*/
+		clicked = 1;
+		window.addEventListener("mousemove", slideMove);
+      	window.addEventListener("touchmove", slideMove);
+	}
+
+	function slideMove(e){
+		var pos;
+		if (clicked == 0) return false;
+		//console.log('Mouse clicked and moved', e);
+		pos = getCursorPos(e);
+		if(pos < maxhigh) {
+			pos = maxhigh;
+			content.style.top = contentHighest + "px";
+			return;
+			}
+		if(pos > maxlow){
+			pos = maxlow;
+			content.style.top = contentLowest + "px";
+			return;
+			}
+
+		slide(pos);
+	}
+
+	function slideFinish() {
+	/*the slider is no longer clicked:*/
+		clicked = 0;
+    }
+
+	function getCursorPos(e) {
+		var a, y = 0;
+		e = e || window.event;
+		a =  document.getElementById('scroller').getBoundingClientRect();
+		//console.log('Cursor position',e.pageY);
+		y = e.pageY - a.top;
+		y = y - window.pageYOffset;
+
+		return y;
+	}
+
+	function slide(x) {
+		var y = document.getElementById('slider');
+		//console.log(x);
+		//console.log(y.offsetTop);
+		if(x>y.offsetTop)contentDown();
+		if(x<y.offsetTop)contentUp();
+		y.style.top = x +'px';
+	}
+	function contentUp(){
+		if(content.offsetTop >= contentHighest){
+			content.style.top = contentHighest + "px";
+		}
+		else 
+			content.style.top = content.offsetTop + 5 + "px";
+	}
+
+	function contentDown(){
+		if(content.offsetTop <= contentLowest)
+			content.style.top = contentLowest + "px";
+		else 
+			content.style.top = content.offsetTop - 5 + "px";
+	}
 </script>
