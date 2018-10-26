@@ -10,7 +10,7 @@
 @import url('https://fonts.googleapis.com/css?family=Offside');
 @import url('https://fonts.googleapis.com/css?family=Chakra+Petch:700');
 body{
-	background:#f2f2f2;
+	background: linear-gradient(to left, #bbb, #f2f2f2);
 }
 .logo{
 	position: relative;
@@ -32,7 +32,7 @@ body{
     transform: translate(-50%, -50%);
 }
 div.header {
-    width: 100%;
+    width: 850px;
 	height:250px;
     overflow: hidden;
     position: relative;
@@ -127,21 +127,21 @@ div.header {
     -ms-transform: translate(-20%, -10%);
     transform: translate(-20%, -10%);
 	font-family: 'Offside', cursive;
-	font-size: 11px;
+	font-size: 12px;
 	color:white;
-	text-shadow: 0.6px 0.6px 0.4px black;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 .bookroom{
-	width:317px;
-	height:317px;
-	background: linear-gradient(to bottom, #c1cd21, #a9b40e);
-	top:-62px;
+	width:337px;
+	height:337px;
+	background: linear-gradient(to bottom, #d1df16, #80880e);
+	top:-54px;
 	left:595px;
 	position:absolute;
 	border-radius:100%;
-	border: 2px solid #ccd74c;
-	box-shadow: 0px 0px 0px 20px #c1cd21;
+	box-shadow: 6px -8px 4px -3px rgba(0,0,0,0.3);
+	transform: rotate(20deg);
 }
 .welcome-screen{
 	width:532px;
@@ -185,10 +185,48 @@ div.header {
 a{
 	text-decoration: none;
 }
-
+.project{
+	width:392px;
+	height:80px;
+	position:absolute;
+	left:405px;
+	background:linear-gradient(to right, #b85305, #f8901f);
+	border-radius: 14px;
+	overflow: hidden;
+	-webkit-box-shadow: 3px 2px  rgba(0,0,0,0.1);
+	-moz-box-shadow: 3px 2px rgba(0,0,0,0.1);
+  	box-shadow: 3px 2px rgba(0,0,0,0.1);
+}
+.ongoing{
+	width:292px;
+	height:100px;
+	position:absolute;
+	top:30px;
+	left:505px;
+	background:linear-gradient(to right, #920450, #e91391);
+	border-radius: 14px;
+	overflow:hidden;
+	box-shadow: 3px 2px rgba(0,0,0,0.1);
+}
+.circular-button{
+	position: relative;;
+	height:20px;
+	width:20px;
+	border-radius: 50%;
+	border: 1px solid rgba(255,255,255,0.3);
+}
+.circular-button span{
+	position:absolute;
+	color:white;
+	font-size: 12px;
+	font-family: 'Chakra Petch', sans-serif;
+	left:8px;
+	top:-1px;
+}
 </style>
 </head>
 <body>
+		<div class='welcome-screen-overlay'></div>
 		<div style='position:absolute;top:180px;left:16px;overflow:hidden;width:870px;height:540px;'>
 			<div class='sudo-body'></div>
 			<div style='width:489px;height:47px;position:absolute;top:448px;left:340px;background-color: #eee;border-radius: 12px;'>
@@ -197,17 +235,50 @@ a{
 				
 					</div>
 			</div>
-<!--			<div style='width:467px;height:45px;position:absolute;top:449px;left:360px;background-color: #fff;border-radius: 12px;border:2px solid #eee'>
-			</div>-->
 		</div>
 		<div class="bookroom" id='temp' style='color:black'>
+			<div style='width:295px;height:295px;border-radius:50%;position:absolute;left:20px;top:20px;border:2px solid rgba(255,255,255,0.4);transform: rotate(-20deg);'>
+				<span style='color:white;font-family: Offside, cursive; font-size:17px;text-shadow:1px 1px 3px rgba(0,0,0,0.4);top:50px;left:65px;position: absolute'>
+					Quick refs & tutes
+				</span>
+				<div class="w3-row" style="right:-7px;top:93px;position:absolute;width:222px">
+					<div class="w3-col" style="font-family:'Open Sans Condensed';font-size: 13px; width:200px;text-align:right;padding:1px;color:white">
+						<span style='margin-right: 6px;text-shadow:1px 1px 1px rgba(0,0,0,0.4);'>LARAVEL DOC CODE SAMPLES</span>
+					</div>
+					<div class="w3-col" style="font-family: 'Open Sans Condensed', sans-serif;width:22px">
+						<div class='circular-button' style="background-color: #c1cd21;">
+							<span>&rsaquo;</span>
+						</div>
+					</div>
+				</div>
+				<div class="w3-row" style="right:-12px;top:123px;position:absolute;width:222px">
+					<div class="w3-col" style="font-family:'Open Sans Condensed';font-size: 13px; width:200px;text-align:right;padding:1px;color:white">
+						<span style='margin-right: 6px'>JAVASCRIPT GOODIES</span>
+					</div>
+					<div class="w3-col" style="font-family: 'Open Sans Condensed', sans-serif;width:22px">
+						<div class='circular-button' style="background-color: #c1cd21;">
+							<span>&rsaquo;</span>
+						</div>
+					</div>
+				</div>
+				<div class="w3-row" style="right:-11px;top:154px;position:absolute;width:222px">
+					<div class="w3-col" style="font-family:'Open Sans Condensed';font-size: 13px; width:200px;text-align:right;padding:1px;color:white">
+						<span style='margin-right: 6px'>GIT REFERENCE SECTION</span>
+					</div>
+					<div class="w3-col" style="font-family: 'Open Sans Condensed', sans-serif;width:22px">
+						<div class='circular-button' style="background-color: #c1cd21;">
+							<span>&rsaquo;</span>
+						</div>
+					</div>
+				</div>				
+			</div>
 		</div>
 		<div style='position:absolute;overflow:hidden;top:200px;left:50px;width:850px;height:430px'>
-			<div style='width:292px;height:100px;position:absolute;top:30px;left:505px;background:linear-gradient(to right, #920450, #e91391);border-radius: 24px;overflow:hidden'>
-					<div style='width:272px;height:86px;position:absolute;top:7px;left:5px;border-radius: 20px;border:1px solid rgba(255,255,255,0.3)'>
-						<div style="float: right;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
+			<div class='ongoing'>
+					<div style='width:272px;height:86px;position:absolute;top:7px;left:5px;border-radius: 12px;border:1px solid rgba(255,255,255,0.3)'>
+						<div style="right:0px;position:absolute;width:170px;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
 							<p>[ Ongoing Project ]<br>Business Automation<p>
-							<ul>
+							<ul style='padding:0px;'>
 								<li style='display: inline'>&#9733; <a href='https://www.laravel.com'>Laravel</a></li>
 								<li style='display: inline'>&#9733; <a href='https://www.reactjs.org'>ReactJS</a></li>
 							</ul>
@@ -218,12 +289,12 @@ a{
 					</div>
 					<div style='width:554px;height:554px;border-radius: 50%;background-color: rgba(0,0,0,0.1);left:-476px;top:-156px;position: absolute;transform: skewY(-3deg)'></div>
 			</div>
-			<div style='width:392px;height:80px;position:absolute;top:137px;left:405px;background:linear-gradient(to right, #b85305, #f8901f);border-radius: 24px;overflow: hidden;'>
-				<div style="width:373px;height:67px;position:absolute;top:7px;left:5px;border-radius: 20px;border:1px solid rgba(255,255,255,0.3)">
-					<div style="float: right;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
+			<div style='top:137px;' class='project'>
+				<div style="width:373px;height:67px;position:absolute;top:7px;left:5px;border-radius: 12px;border:1px solid rgba(255,255,255,0.3)">
+					<div style="right:0px;position:absolute;width:170px;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
 						<span>[ Recently Completed ]<br>
 							Meet, Greet & Assist App
-						</span><ul>
+						</span><ul style='padding:0px;'>
 							<li style="display: inline">&#9733;<a href="https://www.laravel.com">PHP</a></li>
 							<li style="display: inline">&#9733;<a href="https://www.reactjs.org">Javascript</a></li>
 						</ul>
@@ -234,12 +305,12 @@ a{
 				</div>				
 				<div style='width:554px;height:554px;border-radius: 50%;background-color: rgba(0,0,0,0.1);left:-376px;top:-263px;position: absolute;transform: skewY(-3deg)'></div>
 			</div>
-			<div style='width:392px;height:80px;position:absolute;top:224px;left:405px;background:linear-gradient(to right, #b85305, #f8901f);border-radius: 24px;overflow: hidden;'>
-				<div style="width:373px;height:67px;position:absolute;top:7px;left:5px;border-radius: 20px;border:1px solid rgba(255,255,255,0.3)">
-						<div style="float: right;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
+			<div style='top:224px;' class='project'>
+				<div style="width:373px;height:67px;position:absolute;top:7px;left:5px;border-radius: 12px;border:1px solid rgba(255,255,255,0.3)">
+						<div style="right:0px;position:absolute;width:170px;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
 							<span>[ Recently Completed ]<br>
 								SIP Billing App
-							</span><ul>
+							</span><ul style='padding:0px;'>
 								<li style="display: inline">&#9733;<a href="https://www.laravel.com">PHP</a></li>
 								<li style="display: inline">&#9733;<a href="https://www.reactjs.org">Python</a></li>
 							</ul>
@@ -250,12 +321,12 @@ a{
 					</div>		
 				<div style='width:554px;height:554px;border-radius: 50%;background-color: rgba(0,0,0,0.1);left:-376px;top:-350px;position: absolute;transform: skewY(-3deg)'></div>
 			</div>
-			<div style='width:392px;height:80px;position:absolute;top:311px;left:405px;background:linear-gradient(to right, #b85305, #f8901f);border-radius: 24px;overflow: hidden;'>
-				<div style="width:373px;height:67px;position:absolute;top:7px;left:5px;border-radius: 20px;border:1px solid rgba(255,255,255,0.3)">
-						<div style="float: right;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
+			<div style='top:311px;' class='project'>
+				<div style="width:373px;height:67px;position:absolute;top:7px;left:5px;border-radius: 12px;border:1px solid rgba(255,255,255,0.3)">
+						<div style="right:0px;position:absolute;width:170px;color:white;margin-right: 17px;font-family: 'Chakra Petch', sans-serif;font-size: 12px">
 							<span>[ Archived Projects ]<br>
 								3 + Projects
-							</span><ul>
+							</span><ul style='padding:0px;'>
 								<li style="display: inline">&#9733;<a href="https://www.laravel.com">PHP</a></li>
 								<li style="display: inline">&#9733;<a href="https://www.reactjs.org">Android</a></li>
 								<li style="display: inline">&#9733;<a href="https://www.reactjs.org">Java</a></li>
@@ -283,9 +354,7 @@ a{
 					</div>
 				</div>
 			</div>
-		</div>
-	<!--	<div class='welcome-screen-overlay'></div> -->
-		  
+		</div>  
 	
 <div class="w3-container">
 	<div class='header'>
