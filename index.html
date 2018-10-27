@@ -214,7 +214,7 @@ a{
 	height:20px;
 	width:20px;
 	border-radius: 50%;
-	border: 1px solid rgba(255,255,255,0.3);
+	border: 1px solid rgba(255,255,255,1);
 }
 .circular-button span{
 	position:absolute;
@@ -265,7 +265,7 @@ a{
 					Quick refs & tutes
 				</span>
 				<!-- Up Arrow starts -->
-				<div class="w3-row rt-links" style="right:6px;top:63px;">
+				<div class="w3-row rt-links" style="right:14px;top:48px;" id='rtup'>
 					<div class="w3-col content">
 						<span></span>
 					</div>
@@ -282,7 +282,7 @@ a{
 				<!-- Up Arrow Ends -->
 				<!-- Menu Items start -->
 				<!-- 1 -->
-				<div class="w3-row rt-links" style="right:-7px;top:93px;" id='first'>
+				<div class="w3-row rt-links" style="right:-7px;top:93px;" id='rt[0]'>
 					<div class="w3-col content">
 						<span>LARAVEL DOC CODE SAMPLES</span>
 					</div>
@@ -294,7 +294,7 @@ a{
 				</div>
 				<!-- /1 -->
 				<!-- 2 -->
-				<div class="w3-row rt-links" style="right:-12px;top:123px;">
+				<div class="w3-row rt-links" style="right:-12px;top:123px;" id='rt[1]'>
 					<div class="w3-col content" >
 						<span>JAVASCRIPT GOODIES</span>
 					</div>
@@ -306,7 +306,7 @@ a{
 				</div>
 				<!-- /2 -->
 				<!-- 3 -->
-				<div class="w3-row rt-links" style="right:-11px;top:154px;">
+				<div class="w3-row rt-links" style="right:-11px;top:154px;" id='rt[2]'>
 					<div class="w3-col content">
 						<span>GIT REFERENCE SECTION</span>
 					</div>
@@ -316,7 +316,35 @@ a{
 						</div>
 					</div>
 				</div>
-				<!-- /3 -->				
+				<!-- /3 -->
+				<!-- 4 -->
+				<div class="w3-row rt-links" style="right:-5px;top:184px;opacity:0;" id='rt[3]'>
+					<div class="w3-col content">
+						<span>REACTJS TUTORIAL</span>
+					</div>
+					<div class="w3-col" style="font-family: 'Open Sans Condensed', sans-serif;width:22px">
+						<div class='circular-button' style="background-color: #c1cd21;">
+							<span>&rsaquo;</span>
+						</div>
+					</div>
+				</div>
+				<!-- /4 -->
+				<!-- Down Arrow starts -->
+				<div class="w3-row rt-links" style="right:6px;top:214px;" id='rtdown'>
+					<div class="w3-col content">
+						<span></span>
+					</div>
+					<div class="w3-col" style="font-family: 'Open Sans Condensed', sans-serif;width:22px">
+						<div class='circular-button' style="background-color: #808811;height:15px;width:15px">
+							<a href='javascript:void(0)' onclick='rt_prev()'>
+								<span style='left:4px;transform: rotate(30deg);font-size:8px'>
+										&#8897;
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- Down Arrow Ends -->									
 			</div>
 		</div>
 		<!-- Refs & Tutes ends-->
@@ -430,11 +458,55 @@ a{
 </body>
 </html>
 <script>
+	var rtcount,rtlinkstop,pos;
+	init();
+	function init(){
+		var x = document.getElementsByClassName("rt-links");
+		rtcount = x.length;
+		rtlinkstop = 0;
+		pos = [
+			{right:'6px',top:'63px'},
+			{right:'-7px',top:'93px'},
+			{right:'-12px',top:'123px'},
+			{right:'-11px',top:'154px'},
+			{right:'-5px',top:'184px'},
+		];
+	}
+
 	function rt_next(){
-		var el = document.getElementById("first");
-		el.style.top = 63+"px";
-		el.style.right = 6+"px";
-		el.style.opacity = 0;
+		if(rtcount == (rtlinkstop + 5)) return; //2 buttons + 3 active display items = 5
+		var i, el, index;
+		for(i=0;i<4;i++){
+			index = i + rtlinkstop;
+			el = document.getElementById("rt["+index+"]");
+			if(i==3){
+				el.style.opacity = 1;
+			}
+			el.style.top = pos[i]['top'];
+			el.style.right = pos[i]['right'];
+			if(i==0){
+				el.style.opacity = 0;
+			}
+		}
+		rtlinkstop++;
+	}
+
+	function rt_prev(){
+		if(rtlinkstop <1 ) return;
+		var i, el, index;
+		for(i=4;i>0;i--){
+			index = i - rtlinkstop;
+			el = document.getElementById("rt["+index+"]");
+			if(i==4){
+				el.style.opacity = 0;
+			}
+			el.style.top = pos[i]['top'];
+			el.style.right = pos[i]['right'];
+			if(i==1){
+				el.style.opacity = 1;
+			}
+		}
+		rtlinkstop--;
 	}
 
 	var clicked = 0;
