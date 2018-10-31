@@ -3,13 +3,14 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/w3s.css">
+<link rel="stylesheet" href="css/slideshow.css?version=0.0.2">
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
-@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
 @import url('https://fonts.googleapis.com/css?family=Offside');
 @import url('https://fonts.googleapis.com/css?family=Chakra+Petch:700');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Neucha');
 body{
 	background: linear-gradient(to left, #bbb, #f2f2f2);
 }
@@ -22,12 +23,15 @@ body{
 	border-radius:100%;
 	border: 2px solid rgba(0,0,0,0.05);
 	box-shadow: 0px 0px 0px 70px #fdfdfd, 0px 0px 0px 72px rgba(0,0,0,0.05),0px 0px 0px 140px #fdfdfd,0px 0px 0px 142px rgba(0,0,0,0.05);
+	overflow: hidden;
 }
-.logo img{
+.logo .img{
     position: absolute;
     top: 50%;
     left: 50%;
 	width:145px;
+	width:145px;
+	border-radius: 50%;
 	max-width:60%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -66,24 +70,21 @@ div.header {
 	color:white;
 }
 .promotion{
-	width:173px;
-	height:173px;
-	background: linear-gradient(to bottom, #c1cd21, #a9b40e);
-	top:55px;
-	left:484px;
+	width:190px;
+	height:190px;
+	background: linear-gradient(to right, #c1cd21, #a9b40e);
+	top:50px;
+	left:480px;
 	position:absolute;
 	border-radius:100%;
-	border: 1px solid rgba(255,255,255,0.5);
-	box-shadow: 0px 0px 0px 12px #c1cd21;
 }
 
 .promotion-shadow{
-	width:190px;
-	height:190px;
-	background: linear-gradient(to right, #f8f8f8, rgba(0,0,0,0.3));
-	transform: rotate(40deg);
-	top:41px;
-	left:480px;
+	width:180px;
+	height:170px;
+	background: linear-gradient(to right, #f8f8f8, rgba(0,0,0,0.02));
+	top:118px;
+	left:-90px;
 	position:absolute;
 	border-radius:100%;
 }
@@ -143,6 +144,7 @@ div.header {
 	border-radius:100%;
 	box-shadow: 6px -8px 4px -3px rgba(0,0,0,0.3);
 	transform: rotate(20deg);
+	overflow: hidden;
 }
 .welcome-screen{
 	width:532px;
@@ -259,7 +261,9 @@ a{
 			</div>
 		</div>
 		<!-- Refs & Tutes starts-->
-		<div class="refntutes" id='temp' style='color:black'>
+		<div class="refntutes">
+				<div class="promotion-shadow">
+					</div>
 			<div style='width:295px;height:295px;border-radius:50%;position:absolute;left:20px;top:20px;border:2px solid rgba(255,255,255,0.4);transform: rotate(-20deg);'>
 				<span style='color:white;font-family: Offside, cursive; font-size:17px;text-shadow:1px 1px 3px rgba(0,0,0,0.4);top:50px;left:65px;position: absolute'>
 					Quick refs & tutes
@@ -433,17 +437,38 @@ a{
 	
 <div class="w3-container">
 	<div class='header'>
-		<div class="logo">
-			<img src="images/logo.png" width=76%>
-		</div>
-		<div class="promotion-shadow">
+		<div class="logo">		
+				<div class="slideshow-container">
+						<div class="mySlides fade">
+								<!-- <div class="numbertext">1 / 3</div> --->
+								<div style="font-family: 'Neucha', cursive;font-size:100px;text-align:center;padding:30px;border-radius:50%;">ZavH</div>
+								<div class="text" style='font-size:10px;'>Coder. Carricaturist</div>							  
+						</div>
+						<div class="mySlides fade">
+								<!-- <div class="numbertext">1 / 3</div> --->
+								<div style="font-family: 'Neucha', cursive;font-size:20px;text-align:center;padding:70px;border-radius:50%;">References & Tutorials & more . .</div>
+								<div class="text" style='font-size:10px;'>Content Rich</div>							  
+						</div>
+						<div class="mySlides fade">
+								<!-- <div class="numbertext">1 / 3</div> --->
+								<div style="font-family: 'Neucha', cursive;font-size:20px;text-align:center;padding:70px;border-radius:50%;">God! All These Frameworks!</div>
+								<div class="text" style='font-size:10px;'>Atheist though</div>							  
+						</div>
+						<div class="mySlides fade">
+								<!-- <div class="numbertext">1 / 3</div> --->
+								<div style="font-family: 'Neucha', cursive;font-size:18px;text-align:center;padding:70px;border-radius:50%;">"Nomage" [No Image] Policy.</div>
+								<div class="text" style='font-size:10px;'>CSS actually rocks</div>							  
+						</div>
+				</div>
 		</div>
 		<div class="promotion">
+			<div style="position: absolute;width:165px;height:165px;top:12px;left:12px;border-radius:50%;border:1px solid #fff">
 			<form>
 				<label for="email">Promotions<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to your email...</label>
 				<input id="email" type="text" placeholder="your email here...">
 				<button type="submit">&rsaquo;</button>
 			</form>
+			</div>
 		</div>
 		<div class="w3-row bluemenu" style="width:832px;">
 			<div class="w3-col bluestart"></div>
@@ -457,6 +482,7 @@ a{
 </div>
 </body>
 </html>
+<script src="js/slideshow.js"></script>
 <script>
 	var rtcount,rtlinkstop,pos;
 	init();
