@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/w3s.css">
+    <meta charset="utf-8">
+    <title>Laravel Hacks</title>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </head>
+  <body>
+<table class='w3-table-all w3-tiny'>
+  <tr>
+    <th><span class='w3-text-white w3-round w3-blue-grey w3-padding'>Catagory : Validation</span> <span class='w3-text-orange w3-round w3-black w3-padding'>Title : Validate Uniqueness of multiple columns</span></th>
+  </tr>
+  <tr>
+    <td>
+      This is aimed at cases where you have a set of columns which have been defined as unique. Following is the table structure
+      <div class='w3-border w3-round w3-grey'>
+        <div class="w3-margin">
+        <code class="prettyprint">
+            Schema::create('tasks', function (Blueprint $table) {<br>
+            $table->increments('id');<br>
+            $table->string('task_name');<br>
+            $table->text('task_description');<br>
+            $table->unsignedBigInteger('project_id');<br>
+          <strong class='w3-lime'> $table->unique(['task_name', 'project_id']);</strong><br>
+            $table->date('task_deadline');<br>
+            $table->integer('weight')->unsigned();<br>
+            $table->tinyInteger('completed')->unsigned()->default(0);<br>
+            $table->date('date_completed')->nullable()->default(null);<br>
+            $table->timestamps();<br>
+          </code>
+          </div>
+      </div>
+      Note the highlighted line in lime. It defines columns those should be unique as a pair. To elaborate a little more, a user cannot insert same task name for a particular project id.
+      <p>Now, to validate the data through <strong>Laravel</strong> controller, assume that user inputs the task name.
+      I am validating the task_name field and I have received my project_id from the form. Here is the code snippet from the controller:</p>
+      <div class='w3-border w3-round w3-grey'>
+        <div class="w3-margin">
+          <code class="prettyprint">
+            ...... <br>
+            $validator = Validator::make($request->all(), [ <br>
+                'task_name' => 'required|min:2|max:191|unique:tasks,task_name,NULL,id,project_id,' . $request->input('project_id'),<br>
+            ......
+          </code>
+      </div>
+    </div>
+      <p>
+        From <a href="https://laravel.com/docs/5.7/validation#rule-unique">LARAVEL documentation</a>, this is stated as <i class='w3-amber'>unique:table,column,except,idColumn</i>.
+        This is pretty confusing and I believe there are multiple typo and misleading information in official documentation.
+        <p><strong>Firstly</strong> the format should be <i class='w3-pale-red'>unique:table,column,except,id,Column</i></p>
+        <p><strong>Secondly</strong> it does not specify that you have put the value of your target pair (project_id in this case) and separated by a comma <i class='w3-pale-red'>unique:table,column,except,id,Column,Column_value</i></p>
+        <p><strong>Thirdly</strong> You can stack more columns, means you can validate the uniqueness of a group of columns, you can do like this <i class='w3-pale-red'>unique:table,column_1,null,null,column2,column2_value,,null,null,column3,column3_value</i></p>
+
+      </p>
+    </td>
+  </tr>
+</table>
+  </body>
+</html>
