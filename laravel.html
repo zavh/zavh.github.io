@@ -40,7 +40,7 @@
           <code class="prettyprint">
             ...... <br>
             $validator = Validator::make($request->all(), [ <br>
-                'task_name' => 'required|min:2|max:191|unique:tasks,task_name,NULL,id,project_id,' . $request->input('project_id'),<br>
+                'task_name' => 'required|min:2|max:191|unique:tasks,task_name,NULL,NULL,project_id,' . $request->input('project_id'),<br>
             ......
           </code>
       </div>
@@ -48,7 +48,7 @@
       <p>
         From <a href="https://laravel.com/docs/5.7/validation#rule-unique">LARAVEL documentation</a>, this is stated as <i class='w3-amber'>unique:table,column,except,idColumn</i>.
         This is pretty confusing and I believe there are multiple typo and misleading information in official documentation.
-        <p><strong>Firstly</strong> the format should be <i class='w3-pale-red'>unique:table,column,except,id,Column</i></p>
+        <p><strong>Firstly</strong> the format should be <i class='w3-pale-red'>unique:table,column,except,idColumn</i>. Official documentation states that: <span class='w3-light-green'>"If the column option is not specified, the field name will be used"</span></p>
         <p><strong>Secondly</strong> it does not specify that you have put the value of your target pair (project_id in this case) and separated by a comma <i class='w3-pale-red'>unique:table,column,except,id,Column,Column_value</i></p>
         <p><strong>Thirdly</strong> You can stack more columns, means you can validate the uniqueness of a group of columns, you can do like this <i class='w3-pale-red'>unique:table,column_1,null,null,column2,column2_value,,null,null,column3,column3_value</i></p>
 
