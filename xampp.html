@@ -6,21 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>XAMPP-VM setup MacOS</title>
     <link rel="stylesheet" href="css/site.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+    </style>
 </head>
 <body>
     <div class='container'>
-        <div>
-            <div>
-                <h4>Step - 1</h4>
-                XAMPP-VM can have multiple projects. Check "/Users/zaved/.bitnami/stackman/machines", 
-                there lies the 'xampp' directory whcih contains the active project files/xampp environments.
-                If this is renamed to something else and xampp is restarted, a new xampp directory will be automatically created.
-                <p>First Close XAMPP completely</p>
-                <p>
-                    Rename xampp directory
-                </p>
-            </div>
-        </div>
+        <ol class='steps-content'>
+            <div class='steps'>
+                <li> <span>Preparing XAMPP-VM for multiple projects.</span>
+                    <ol>
+                        <li>Close XAMPP completely</li> 
+                        <li>Rename xampp directory: Check "/Users/{username}/.bitnami/stackman/machines",
+                        there lies the 'xampp' directory whcih contains the active project files/xampp environments.
+                        If this is renamed to something else and xampp is restarted, a new xampp directory will be automatically created.
+                        Renaming is harmless [as checked on March, 2021] - rename it back to xampp, [of course need to take care in case
+                        any other directory of the same name exists] will make it the active project and without any alteration. For example
+                        if gulp/nodejs/composer/wordpress or any other package/framework previously installed will work same as before.
+                        </li>
+                    </ol>
+                </li>
+            
+                <div class='steps-image'> <img src="images/step-1.0.png" alt=""></div>
+            </div> <!-- steps end -->
+            <div class='steps'>
+                    <li> <span>Install Wordpress and prepare permissions</span>
+                        <ol>
+                            <li><div class='wordpress'>Wordpress</div> bitnami stack will be installed in this tutorial, which can 
+                                be found <a href="https://bitnami.com/stack/wordpress/installer">here</a>. Save the link for 
+                                The Linux 64-bit version. Open the XAMPP terminal. Issue the following commands:
+
+                                <div class='terminal-command'> <span>root@debian:~# cd</span>  </div> 
+                                <div class='terminal-command'> <span>root@debian:~# </span>  </div> 
+                                <div class='terminal-command'> <span>root@debian:~# wget https://bitnami.com/redirect/to/1417149/bitnami-wordpress-5.7-2-linux-x64-installer.run</span></div>
+                                <div class='terminal-command'> <span>root@debian:~# chmod +x bitnami-wordpress-5.7-2-linux-x64-installer.run </span></div>
+                                <div class='terminal-command'> <span>root@debian:~# ./bitnami-wordpress-5.7-2-linux-x64-installer.run </span></div>
+                                <div class='note'>the wget link is the one copied earlier from bitnami website</div>
+                                This will download the installer in root's home directory, change the permission so that it's an executable and then start the installation.
+                            </li> 
+                            <li>
+                            </li>
+                        </ol>
+                    </li>
+                
+                    <div class='steps-image'> <img src="images/step-2.0.png" alt=""></div>
+                </div> <!-- steps end -->
+        </ol>
     </div>
 </body>
 </html>
