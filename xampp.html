@@ -36,15 +36,33 @@
                                 be found <a href="https://bitnami.com/stack/wordpress/installer">here</a>. Save the link for 
                                 The Linux 64-bit version. Open the XAMPP terminal. Issue the following commands:
 
-                                <div class='terminal-command'> <span>root@debian:~# cd</span>  </div> 
-                                <div class='terminal-command'> <span>root@debian:~# </span>  </div> 
-                                <div class='terminal-command'> <span>root@debian:~# wget https://bitnami.com/redirect/to/1417149/bitnami-wordpress-5.7-2-linux-x64-installer.run</span></div>
-                                <div class='terminal-command'> <span>root@debian:~# chmod +x bitnami-wordpress-5.7-2-linux-x64-installer.run </span></div>
-                                <div class='terminal-command'> <span>root@debian:~# ./bitnami-wordpress-5.7-2-linux-x64-installer.run </span></div>
-                                <div class='note'>the wget link is the one copied earlier from bitnami website</div>
+                                <div class='terminal-command'> <span>root@debian:~# cd</span></div> 
+                                <div class='terminal-command'> <span>root@debian:~# </span></div> 
+                                <div class='terminal-command'> <span>root@debian:~# wget https://bitnami.com/redirect/to/876131/bitnami-wordpress-5.3.2-2-module-linux-x64-installer.run</span></div>
+                                <div class='terminal-command'> <span>root@debian:~# chmod +x bitnami-wordpress-5.3.2-2-module-linux-x64-installer.run </span></div>
+                                <div class='terminal-command'> <span>root@debian:~# ./bitnami-wordpress-5.3.2-2-module-linux-x64-installer.run </span></div>
+                                <div class='note'>the wget link is an older version of bitnami-wordpress package. Once installed, update to the latest version of wordpress by logging into wordpress/admin.</div>
                                 This will download the installer in root's home directory, change the permission so that it's an executable and then start the installation.
                             </li> 
+                            <li> Install git [optional]. XAMPP-VM does not come with git pre-installed. A couple of commands will do.
+                                <div class='terminal-command'> <span>root@debian:~# sudo apt-get update</span></div>
+                                <div class='terminal-command'> <span>root@debian:~# sudo apt-get install git</span></div> 
+                            </li>
                             <li>
+                                Login to <div class="wordpress">Wordpress</div> Admin page in local environment.
+                                <code>localhost:8080/wordpress/wp-admin/</code>
+                                Use the username/password created in Step 2.1. Update <div class="wordpress">Wordpress</div> to the latest version. Remove/update the 
+                                default plugins and themes as suited.
+                            </li>
+                            <li>
+                                Go back to the XAMPP terminal. <div class="wordpress">Wordpress</div> is installed here:
+                                <div class="terminal-command"> <span>/opt/lampp/apps/wordpress</span></div>
+                                Since all the commands run from the XAMPP terminal so far are as root, we need to change the permission of some folders for the apps to be developed so that
+                                the editors [Atom/Visual Studio etc] can edit/create files and folders. Issue the following commands:
+                                <div class='terminal-command'> <span>root@debian:~# cd /opt/lampp/apps/wordpress/htdocs/wp-content/themes</span></div>
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/apps/wordpress/htdocs/wp-content/themes# mkdir mytheme</span></div>
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/apps/wordpress/htdocs/wp-content/themes# chown bitnami:root mytheme</span></div>
+                                Now, new theme can be developed from editors outside the XAMPP-VM.
                             </li>
                         </ol>
                     </li>
