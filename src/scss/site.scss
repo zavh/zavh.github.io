@@ -1,9 +1,11 @@
+@import 'base/variables';
+
 body{
     font-family: 'Ubuntu', sans-serif;
 }
 
 .wordpress{
-    color: rgb(80, 152, 219);
+    color: $wordpress;
     font-weight: bold;
     display: inline;
 }
@@ -54,7 +56,7 @@ li:before {
 
 .terminal-command{
     width: 100%;
-    background: rgb(228, 225, 225);
+    background: $command;
     margin-bottom: 1px;
 }
 .terminal-command span{

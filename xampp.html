@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>XAMPP-VM setup MacOS</title>
-    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/w3s.css">
+    <link rel="stylesheet" href="dist/css/site.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Ubuntu');
     </style>
@@ -104,9 +105,86 @@
                                 After inserting the appropriate options, this will create the package.json file in the project directory.
                                 Then to install gulp, issue the following command:
                                 <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# npm install --save-dev gulp</span></div>
+                                Gulp is used for compiling scss and es6 to regular css and vanilla javascript files and also to create the minified versions of them.
+                                A proper directory structure is preferred for that. Here, an 'src' [source] directory will hold the scss and es6 files and a 'dist' [distribution]
+                                directory will hold the compiled and minified versions. Create a js and scss directory in src and js and css directory in dist folder.
+                                The directory structure looks like the right hand side image.
+                            </li>
+                            <li>Step 4.1 will create a huge node_modules directory which is used for development purposes. No need to put it in 
+                                production environment or git repository. Anybody developing from the repository can 'npm init' to create the files automatically.
+                                So, better put the directory in .gitignore. 
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# touch .gitignore </span></div>
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# vi .gitignore </span></div>
+                                Write 'node_modules' in the .gitignore file to prevent it from tracking.
+                            </li>
+                            <li> Next is Gulp CLI. To install, issue the following:
+                                <div class='terminal-command'> <span>root@debian:# npm install --global gulp-cli </span></div>
+                                Gulp CLI is installed globally, issue the terminal command from any directory.
+                            </li>
+                            <li> Two more essential packages needed for SASS processing. Issue the following commands from project directory:
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# npm install --save-dev gulp-sass </span></div>
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# npm install --save-dev gulp-rename </span></div>
+                            </li>
+                            <li>An example: Using the directory structure, all source codes [scss for css] will be put in the 'src directory'. Then Gulp cli will
+                                be used to generate css files, minified and transferred to the dist/css directory. Make sure that the 'link' tags' src are pointing 
+                                to the dist/css/[css filename].min.js. Following code is saved as gulpfile.js in the project directory.
+                                <div class="w3-cell-row w3-margin-top">
+                                    <div class="w3-container w3-cell w3-light-gray ">
+<pre><code>
+var gulp = require( 'gulp' );
+var rename = require( 'gulp-rename' );
+var sass = require( 'gulp-sass' );
+
+var styleSRC = './src/scss/site.scss';
+var styleDIST = './dist/css/';
+
+gulp.task('style', async function(){
+    gulp.src( styleSRC )
+        .pipe( sass( {
+            errorLogToConsole: true,
+            outputStyle : 'compressed',
+        } ) )
+        .on( 'error', console.error.bind( console ) )
+        .pipe( rename( { suffix: '.min' } ) )
+        .pipe( gulp.dest( styleDIST ) );
+});</code></pre>
+                                    </div>
+                                    
+                                    <div class="w3-container w3-cell w3-padding">
+                                        This is telling gulp to do the followings <br>
+                                        -- Read the file specified by 'styleSRC'. <br>
+                                        -- Compress or minify it. <br>
+                                        -- Add a suffix .min. <br>
+                                        -- Finally transfer it to the destination directory specified in 'styleDIST'
+
+                                        <p>
+                                            To run, execute the following: <div class="note">'style' is the name of the gulp task</div>
+                                            <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# gulp style </span></div>
+                                        </p>
+
+                                        <p>
+                                            Expected output: 
+<pre>
+root@debian:/opt/lampp/htdocs/zavh.github.io# gulp style 
+[14:10:22] Using gulpfile /opt/lampp/htdocs/zavh.github.io/gulpfile.js
+[14:10:22] Starting 'style'...
+[14:10:22] Finished 'style' after 36 ms</pre>
+                                        </p>
+                                        <p>
+                                            Expected result:
+                                            A minified version of site.scss residing at the styleDest directory as site.min.css
+                                        </p>
+                                    </div>
+                                      
+                                </div>
+
+
                             </li>
                         </ol>
                     </li>
+                    <div class='steps-image'>
+                        <img src="images/step-4.0.png" alt="">
+                    </div>
                 </div> <!-- steps end -->
         </ol>
     </div>
