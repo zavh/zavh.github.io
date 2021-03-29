@@ -20,6 +20,10 @@ body{
     padding: 6px;
     display: flex;
 }
+.steps-image{
+    display: flex;
+    flex-direction: column;
+}
 .steps-image img{
     height: 120px;
 }

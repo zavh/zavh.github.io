@@ -24,6 +24,9 @@
                         any other directory of the same name exists] will make it the active project and without any alteration. For example
                         if gulp/nodejs/composer/wordpress or any other package/framework previously installed will work same as before.
                         </li>
+                        <li>Once XAMPP restarted, open terminal from XAMPP and install vim which will come handy time to time:
+                            <div class='terminal-command'> <span>root@debian:~# sudo apt-get install vim </span></div> 
+                        </li>
                     </ol>
                 </li>
             
@@ -60,14 +63,50 @@
                                 Since all the commands run from the XAMPP terminal so far are as root, we need to change the permission of some folders for the apps to be developed so that
                                 the editors [Atom/Visual Studio etc] can edit/create files and folders. Issue the following commands:
                                 <div class='terminal-command'> <span>root@debian:~# cd /opt/lampp/apps/wordpress/htdocs/wp-content/themes</span></div>
-                                <div class='terminal-command'> <span>root@debian:/opt/lampp/apps/wordpress/htdocs/wp-content/themes# mkdir mytheme</span></div>
-                                <div class='terminal-command'> <span>root@debian:/opt/lampp/apps/wordpress/htdocs/wp-content/themes# chown bitnami:root mytheme</span></div>
+                                <div class='terminal-command'> <span>root@debian:~#/opt/lampp/apps/wordpress/htdocs/wp-content/themes# mkdir mytheme</span></div>
+                                <div class='terminal-command'> <span>root@debian:~#/opt/lampp/apps/wordpress/htdocs/wp-content/themes# chown bitnami:root mytheme</span></div>
                                 Now, new theme can be developed from editors outside the XAMPP-VM.
                             </li>
                         </ol>
                     </li>
                 
                     <div class='steps-image'> <img src="images/step-2.0.png" alt=""></div>
+                </div> <!-- steps end -->
+                <div class='steps'>
+                    <li> <span>Installing Nodejs and Node Package Manager (npm)</span>
+                        <ol>
+                            <li>Nodejs and npm has become one of the essentials for web development. Nodejs facilitates managing
+                                different packages and dependencies. In this tutorial, we will use npm for installing 'gulp'.
+                                Issue the following commands in XAMPP-VM terminal:
+                                <div class='terminal-command'> <span>root@debian:~# sudo apt-get update</span></div>
+                                <div class='terminal-command'> <span>root@debian:~# sudo apt-get install nodejs</span></div>
+                                <div class='terminal-command'> <span>root@debian:~# sudo apt-get install npm</span></div>
+                            </li>
+                            <li> After the commands finish execution, issue the commands as shown in figure. If versions are shown
+                                in the output, installation has been completed. Check if you see the following warning:
+                                <div class='terminal-command'> <span>npm does not support Node.js v10.24.0</span></div>
+                                In such case, close the XAMPP-VM terminal and open again. Then issue the following command:
+                                <div class='terminal-command'> <span>root@debian:~#npm i -g npm@next</span></div>
+                            </li>
+                        </ol>
+                    </li>
+                
+                    <div class='steps-image'>
+                         <img src="images/step-3.0.png" alt="">
+                         <img src="images/step-3.1.png" alt="">
+                    </div>
+                </div> <!-- steps end -->
+                <div class='steps'>
+                    <li> <span>Installing Gulp and package.json</span>
+                        <ol>
+                            <li>Change to the project directory Issue the following commands in XAMPP-VM terminal:
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# npm init </span></div>
+                                After inserting the appropriate options, this will create the package.json file in the project directory.
+                                Then to install gulp, issue the following command:
+                                <div class='terminal-command'> <span>root@debian:/opt/lampp/htdocs/zavh.github.io# npm install --save-dev gulp</span></div>
+                            </li>
+                        </ol>
+                    </li>
                 </div> <!-- steps end -->
         </ol>
     </div>
